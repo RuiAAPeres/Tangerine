@@ -22,6 +22,13 @@ Drag the `Tangerine.swift` file into your project. 🍊
 
 Typically a view should have a single `ImageFetcher`, and as such it’s not possible for one to fetch different images with only one instance of a `ImageFetcher`. From a code point of view:
 
+
+```swift 
+let tangerines = URL(string: "https://www.strongertogether.coop/sites/default/files/Tangerines.jpg")!
+let fetcher = ImageFetcher(urL: tangerines)
+let example = ExampleView(fetcher: fetcher)
+```
+
 ```swift 
 struct ExampleView: View {
   @ObservedObject var fetcher: ImageFetcher

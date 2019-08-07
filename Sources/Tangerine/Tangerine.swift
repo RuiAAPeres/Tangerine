@@ -9,7 +9,7 @@ public class ImageFetcher: ObservableObject {
     
     @Published public private(set) var image: UIImage? = nil
     
-    init(url: URL,
+    public init(url: URL,
          session: URLSession = .shared) {
         self.url = url
         self.session = session

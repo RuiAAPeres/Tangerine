@@ -23,7 +23,7 @@ Drag the `Tangerine.swift` file into your project. 🍊
 Typically a view should have a single `ImageFetcher`, and as such it’s not possible for one to fetch different images with only one instance of a `ImageFetcher`. From a code point of view:
 
 ```swift 
-struct WeeklyWeatherView: View {
+struct ExampleView: View {
   @ObservedObject var fetcher: ImageFetcher
   
   init(viewModel: ImageRepository) {

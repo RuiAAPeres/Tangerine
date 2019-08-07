@@ -4,16 +4,19 @@ import Combine
 public class ImageRepository: ObservableObject {
     
     private let url: URL
+    private let session: URLSession
     private var cancellable: AnyCancellable?
     
     @Published public private(set) var image: UIImage? = nil
     
-    init(url: URL) {
+    init(url: URL,
+         session: URLSession = .shared) {
         self.url = url
+        self.session = session
     }
     
     public func refresh() {
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
+        cancellable = session.dataTaskPublisher(for: url)
             .map { $0.data }
             .map(UIImage.init(data:))
             .catch { _ in Empty<UIImage?, Never>() }

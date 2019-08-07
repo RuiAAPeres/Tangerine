@@ -26,14 +26,14 @@ Typically a view should have a single `ImageFetcher`, and as such it’s not pos
 struct ExampleView: View {
   @ObservedObject var fetcher: ImageFetcher
   
-  init(viewModel: ImageRepository) {
+  init(fetcher: ImageFetcher) {
     self.fetcher = fetcher
   }
   
   var body: some View {
     VStack {
       if fetcher.image != nil {
-        Image(uiImage: repository.image!)
+        Image(uiImage: fetcher.image!)
           .resizable()
           .aspectRatio(contentMode: .fit)
       }

@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-public class ImageRepository: ObservableObject {
+public class ImageFetcher: ObservableObject {
     
     private let url: URL
     private let session: URLSession

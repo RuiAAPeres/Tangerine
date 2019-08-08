@@ -39,13 +39,10 @@ struct ExampleView: View {
   
   var body: some View {
     VStack {
-      if fetcher.image != nil {
-        Image(uiImage: fetcher.image!)
+      fetcher.image.map {
+        Image(uiImage: $0)
           .resizable()
           .aspectRatio(contentMode: .fit)
-      }
-      else {
-        EmptyView()
       }
     }
     .onAppear(perform: fetcher.refresh)

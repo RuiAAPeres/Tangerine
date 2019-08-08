@@ -14,3 +14,12 @@ class MockFetcher: Fetcher {
         return value.publisher.eraseToAnyPublisher()
     }
 }
+
+class MockFetcher_Crash: Fetcher {
+
+    init() {}
+    
+    func dataTaskPublisher(for url: URL) -> AnyPublisher<Data, URLError> {
+        fatalError("This shouldn't be called")
+    }
+}

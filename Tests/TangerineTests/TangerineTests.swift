@@ -67,4 +67,25 @@ final class TangerineTests: XCTestCase {
         
         wait(for: [expectation], timeout: 2)
     }
+    
+    func test_caching_get_success() {
+        
+        let expectation = XCTestExpectation()
+        let mockedFetcher = MockFetcher_Crash()
+        let fetcher = ImageFetcher(url: url, session: mockedFetcher, cache: cache)
+        
+        cache.setObject(image, forKey: NSString(string: self.url.absoluteString))
+        
+        fetcher.refresh()
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1, execute: {
+            let key = NSString(string: self.url.absoluteString)
+            let value = self.cache.object(forKey:key)
+            XCTAssertNotNil(value)
+            XCTAssertNotNil(fetcher.image)
+            expectation.fulfill()
+        })
+        
+        wait(for: [expectation], timeout: 2)
+    }
 }

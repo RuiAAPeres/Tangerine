@@ -50,13 +50,9 @@ struct ExampleView: View {
 }
 ``` 
 
-The actual HTTP request is done not when the `ImageFetcher` is created, but when the `refresh` method is called.  Two caveats to keep in mind:
+The actual HTTP request is done not when the `ImageFetcher` is created, but when the `refresh` method is called.  
 
-1. There’s no error handling component.
-2. There’s no caching mechanism. 
-
-Both can be implemented, although it would add an extra layer of complexity to this project. 
-
+Tangerine also supports caching via `NSCache`. You can either supply yours, or use the default one. 
 
 
 

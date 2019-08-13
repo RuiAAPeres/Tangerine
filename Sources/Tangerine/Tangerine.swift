@@ -8,7 +8,7 @@ public protocol Fetcher {
 
 extension URLSession: Fetcher {
   public func dataTaskPublisher(for url: URL) -> AnyPublisher<Data, URLError> {
-    self.dataTaskPublisher(for: url).map { $0.0 }.eraseToAnyPublisher()
+    self.dataTaskPublisher(for: url).map(\.data).eraseToAnyPublisher()
   }
 }
 
